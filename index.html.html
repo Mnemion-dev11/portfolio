@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dwi Agung Pangestu — IT Infrastructure Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  /* Fallback font stack jika Google Fonts tidak load */
+  :root {
+    --font-display-fallback: 'Arial Black', 'Impact', sans-serif;
+  }
+</style>
+<style>
+  :root {
+    --bg: #0a0c10;
+    --bg2: #111318;
+    --bg3: #181c24;
+    --accent: #00e5a0;
+    --accent2: #0077ff;
+    --accent3: #ff6b35;
+    --text: #f0f2f8;
+    --text2: #b8bece;
+    --text3: #7a8499;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(0,229,160,0.2);
+    --card-bg: rgba(255,255,255,0.03);
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRID TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    z-index: 1;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+    top: 50%; left: 40%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,160,0.08);
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: var(--font-display), 'Arial Black', Arial, sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .hero-name span {
+    display: block;
+    background: linear-gradient(135deg, #00e5a0 0%, #0077ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    max-width: 520px;
+    color: var(--text2);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #0a0c10;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: #00ffb3;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* TERMINAL CARD */
+  .hero-terminal {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 16px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .t-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .t-red { background: #ff5f57; }
+  .t-yellow { background: #febc2e; }
+  .t-green { background: #28c840; }
+
+  .terminal-title {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text3);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .terminal-body {
+    padding: 20px;
+    line-height: 1.9;
+  }
+
+  .t-comment { color: var(--text3); }
+  .t-cmd { color: var(--accent); }
+  .t-val { color: #7dd3fc; }
+  .t-str { color: #fda4af; }
+  .t-key { color: #c084fc; }
+  .t-cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--accent);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 5%;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .skill-card {
+    background: var(--bg2);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .skill-card:hover { background: var(--bg3); }
+
+  .skill-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .skill-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    background: rgba(0,229,160,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(0,229,160,0.15);
+  }
+
+  .tag.blue {
+    background: rgba(0,119,255,0.08);
+    color: #60a5fa;
+    border-color: rgba(0,119,255,0.15);
+  }
+
+  .tag.orange {
+    background: rgba(255,107,53,0.08);
+    color: #fb923c;
+    border-color: rgba(255,107,53,0.15);
+  }
+
+  /* EXPERIENCE */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    transition: background 0.2s;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+  .exp-item:hover { background: var(--bg3); }
+
+  .exp-left {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-company {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-location {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .exp-right {
+    padding: 2rem;
+  }
+
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .project-card:hover { background: var(--bg3); }
+
+  .project-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #7a8499;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    color: #f0f2f8;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: #b8bece;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* TECH STACK */
+  .stack-section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 3rem;
+  }
+
+  .stack-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stack-row:last-child { border-bottom: none; }
+
+  .stack-category {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #9aa3b8;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-width: 140px;
+  }
+
+  .stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .stack-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #d0d5e8;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+
+  .stack-badge:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,160,0.05);
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub {
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,160,0.04);
+  }
+
+  .contact-link .cl-icon {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 60px;
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 5%;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 5%;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge { animation-delay: 0.1s; }
+  .hero-name { animation-delay: 0.2s; }
+  .hero-title { animation-delay: 0.3s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.5s; }
+  .hero-actions { animation-delay: 0.6s; }
+  .hero-terminal { animation-delay: 0.7s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-terminal { display: none; }
+    .hero { padding: 100px 5% 60px; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-left { border-right: none; border-bottom: 1px solid var(--border); }
+    .contact-section { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+    .stack-row { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+    section { padding: 60px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">dwi_agung.sh</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#projects">Proyek</a></li>
+    <li><a href="#stack">Tech Stack</a></li>
+    <li><a href="#edu">Sertifikasi</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div style="position:relative; z-index:2; max-width:600px;">
+    <div class="hero-badge fade-in">AVAILABLE FOR WORK — JAKARTA / BEKASI</div>
+    <h1 class="hero-name fade-in">
+      Dwi Agung<br>
+      <span>Pangestu</span>
+    </h1>
+    <p class="hero-title fade-in">IT Support & Infrastructure Engineer</p>
+    <p class="hero-desc fade-in">
+      Spesialis Linux server administration, database clustering (PXC/Galera), dan infrastruktur enterprise. 2+ tahun pengalaman mengelola sistem kritikal untuk klien perbankan dan enterprise berskala besar.
+    </p>
+    <div class="hero-stats fade-in">
+      <div class="stat-item">
+        <span class="stat-num">2+</span>
+        <span class="stat-label">Tahun Pengalaman</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5</span>
+        <span class="stat-label">VM Cluster Nodes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">99%</span>
+        <span class="stat-label">Uptime Target</span>
+      </div>
+    </div>
+    <div class="hero-actions fade-in">
+      <a href="#contact" class="btn-primary">Hubungi Saya ↗</a>
+      <a href="#experience" class="btn-secondary">Lihat Pengalaman</a>
+    </div>
+  </div>
+
+  <!-- TERMINAL -->
+  <div class="hero-terminal fade-in">
+    <div class="terminal-bar">
+      <div class="t-dot t-red"></div>
+      <div class="t-dot t-yellow"></div>
+      <div class="t-dot t-green"></div>
+      <span class="terminal-title">dwi@infra-server:~$</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="t-comment"># Profile summary</span></div>
+      <div><span class="t-cmd">cat</span> <span class="t-val">whoami.json</span></div>
+      <br>
+      <div><span class="t-key">{</span></div>
+      <div>&nbsp;&nbsp;<span class="t-str">"name"</span>: <span class="t-val">"Dwi Agung Pangestu"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-str">"role"</span>: <span class="t-val">"IT Support Engineer"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-str">"location"</span>: <span class="t-val">"Bekasi, Indonesia"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-str">"os"</span>: <span class="t-val">"Ubuntu 22.04 LTS"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-str">"db_cluster"</span>: <span class="t-val">"PXC + ProxySQL"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-str">"ha_stack"</span>: <span class="t-val">"Keepalived + VIP"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-str">"status"</span>: <span class="t-cmd">"available"</span></div>
+      <div><span class="t-key">}</span></div>
+      <br>
+      <div><span class="t-cmd">$</span> <span class="t-cursor"></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// KOMPETENSI</div>
+  <h2 class="section-title">Area Keahlian</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-icon">🖥️</div>
+      <div class="skill-name">Linux Server Administration</div>
+      <p class="skill-desc">Pengelolaan server Ubuntu 22.04 LTS, konfigurasi systemd, monitoring dengan journalctl, manajemen paket APT dan PPA, serta troubleshooting multi-VM enterprise.</p>
+      <div class="skill-tags">
+        <span class="tag">Ubuntu</span>
+        <span class="tag">systemd</span>
+        <span class="tag">Bash</span>
+        <span class="tag">SSH</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">Database Clustering (PXC)</div>
+      <p class="skill-desc">Implementasi dan manajemen Percona XtraDB Cluster (Galera), crash recovery, bootstrap procedure, SST/IST troubleshooting, dan wsrep incident handling.</p>
+      <div class="skill-tags">
+        <span class="tag">PXC 8.0</span>
+        <span class="tag">Galera</span>
+        <span class="tag">MySQL 8</span>
+        <span class="tag blue">ProxySQL</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">High Availability (HA)</div>
+      <p class="skill-desc">Setup Keepalived dengan Virtual IP, konfigurasi failover otomatis, monitoring health check, dan implementasi read/write splitting melalui ProxySQL.</p>
+      <div class="skill-tags">
+        <span class="tag">Keepalived</span>
+        <span class="tag">VIP Failover</span>
+        <span class="tag blue">R/W Split</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">Web Server & Proxy</div>
+      <p class="skill-desc">Konfigurasi dan troubleshooting Nginx reverse proxy, Apache2 multi-version management, penanganan port conflict, dan SSL termination pada lingkungan enterprise.</p>
+      <div class="skill-tags">
+        <span class="tag">Nginx</span>
+        <span class="tag">Apache2</span>
+        <span class="tag orange">Reverse Proxy</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🐳</div>
+      <div class="skill-name">Docker & Containerization</div>
+      <p class="skill-desc">Deployment aplikasi berbasis Docker, troubleshooting container startup, manajemen volume dan network, serta audit storage untuk Docker layer bloat.</p>
+      <div class="skill-tags">
+        <span class="tag">Docker</span>
+        <span class="tag blue">Docker Compose</span>
+        <span class="tag">Container Ops</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📡</div>
+      <div class="skill-name">Monitoring & Service Management</div>
+      <p class="skill-desc">Deploy layanan monitoring TCP (Go-based), pembuatan dashboard monitoring berbasis web dengan audio alert, dan pengelolaan service systemd di multi-VM environment.</p>
+      <div class="skill-tags">
+        <span class="tag">Systemd</span>
+        <span class="tag blue">TCP Monitoring</span>
+        <span class="tag orange">Go Service</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🏧</div>
+      <div class="skill-name">EDC & Payment System</div>
+      <p class="skill-desc">Support teknis perangkat EDC, deployment PaxStoreLite, dan pengelolaan sistem pembayaran QRIS, kartu kredit, serta marketplace/invoice untuk klien perbankan.</p>
+      <div class="skill-tags">
+        <span class="tag">PaxStore</span>
+        <span class="tag orange">QRIS</span>
+        <span class="tag orange">EDC Mgmt</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📄</div>
+      <div class="skill-name">Dokumentasi Teknis</div>
+      <p class="skill-desc">Pembuatan SOP recovery PXC, dokumentasi prosedur server, DR timeline diagram, dan topologi infrastruktur dalam format profesional (Word, Draw.io, SVG).</p>
+      <div class="skill-tags">
+        <span class="tag">SOP Writing</span>
+        <span class="tag blue">Draw.io</span>
+        <span class="tag">DR Planning</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// PENGALAMAN KERJA</div>
+  <h2 class="section-title">Riwayat Pekerjaan</h2>
+  <div class="experience-list">
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">JUL 2023 — SEKARANG</div>
+        <div class="exp-company">PT. Smartweb Indonesia Kreasi</div>
+        <div class="exp-location">Jakarta, Indonesia</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">IT Support</div>
+        <p class="exp-desc">
+          Troubleshooting dan resolusi isu teknis terkait website, software, dan infrastruktur jaringan. Konfigurasi PXC + ProxySQL untuk database high availability termasuk bootstrap cluster, read/write splitting, dan pengujian 6 skenario disaster recovery. Setup Keepalived VIP dengan unicast failover dan implementasi IP restriction per-user via ProxySQL query rules. Instalasi, konfigurasi, dan pemeliharaan perangkat EDC (PAX terminal) serta administrasi server Ubuntu.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">PXC Cluster</span>
+          <span class="tag">ProxySQL</span>
+          <span class="tag">Keepalived</span>
+          <span class="tag blue">Ubuntu Server</span>
+          <span class="tag blue">Apache2 / Nginx</span>
+          <span class="tag orange">EDC / PAX Terminal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">DES 2020 — DES 2021</div>
+        <div class="exp-company">PT. Han Ul Jaya Garment</div>
+        <div class="exp-location">Bogor, Indonesia</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">IT Support</div>
+        <p class="exp-desc">
+          Memberikan dukungan teknis harian kepada karyawan mencakup komputer, printer, dan jaringan internal. Membantu proses instalasi serta maintenance software di lingkungan perusahaan garment.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">End-User Support</span>
+          <span class="tag blue">Networking</span>
+          <span class="tag">Hardware Maintenance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">AGS 2018 — OKT 2018</div>
+        <div class="exp-company">PT. Indosis Integrasi</div>
+        <div class="exp-location">Jakarta, Indonesia</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">IT Support Intern</div>
+        <p class="exp-desc">
+          Mendukung tim IT dalam instalasi dan konfigurasi perangkat. Menangani permasalahan teknis dasar pada pengguna selama masa magang.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Instalasi Perangkat</span>
+          <span class="tag blue">Technical Support</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// PROYEK UNGGULAN</div>
+  <h2 class="section-title">Implementasi & Proyek</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01 / DATABASE</div>
+      <div class="project-title">PXC High Availability Cluster</div>
+      <p class="project-desc">Implementasi penuh Percona XtraDB Cluster 3-node + ProxySQL + Keepalived di 5 Ubuntu VM. Mencakup konfigurasi read/write splitting, VIP failover, dan prosedur crash recovery.</p>
+      <div class="project-stack">
+        <span class="tag">PXC 8.0</span>
+        <span class="tag">ProxySQL 2.x</span>
+        <span class="tag">Keepalived</span>
+        <span class="tag blue">Galera Repl.</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02 / MONITORING</div>
+      <div class="project-title">Service Monitoring Dashboard</div>
+      <p class="project-desc">Web dashboard monitoring real-time untuk layanan clientMonitoring (TCP port 21133) di multi-VM environment, dilengkapi audio alert dan status tracking berbasis systemd.</p>
+      <div class="project-stack">
+        <span class="tag">Go</span>
+        <span class="tag blue">TCP Listener</span>
+        <span class="tag">Systemd</span>
+        <span class="tag orange">Web Dashboard</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03 / PAYMENT</div>
+      <div class="project-title">BRITO Payment System</div>
+      <p class="project-desc">Support teknis sistem pembayaran BRITO mencakup QRIS, kartu kredit (dengan/tanpa OTP), dan fitur marketplace/invoice untuk keperluan perbankan.</p>
+      <div class="project-stack">
+        <span class="tag orange">QRIS</span>
+        <span class="tag orange">Credit Card</span>
+        <span class="tag orange">Marketplace</span>
+        <span class="tag blue">BRI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04 / EDC</div>
+      <div class="project-title">PaxStoreLite Deployment</div>
+      <p class="project-desc">Deployment dan konfigurasi PaxStoreLite v3.2.122 menggunakan Docker di Linux server. Troubleshooting container startup, MySQL 8 user permission, dan Nginx reverse proxy.</p>
+      <div class="project-stack">
+        <span class="tag">PaxStore</span>
+        <span class="tag">Docker</span>
+        <span class="tag blue">MySQL 8</span>
+        <span class="tag">Nginx</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05 / DOCUMENTATION</div>
+      <div class="project-title">SOP PXC Recovery & DR Plan</div>
+      <p class="project-desc">Pembuatan dokumentasi SOP lengkap recovery node PXC, wsrep incident handling, DR timeline diagram (DC DCI Bekasi ↔ DRC Green Lake Tangerang), dan topologi infrastruktur.</p>
+      <div class="project-stack">
+        <span class="tag">SOP</span>
+        <span class="tag blue">DR Planning</span>
+        <span class="tag">Draw.io</span>
+        <span class="tag orange">Docx</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">06 / APACHE</div>
+      <div class="project-title">Apache2 Version Management</div>
+      <p class="project-desc">Manajemen versi Apache2 di multi-VM BRI network dengan proxy restriction. Meliputi prosedur upgrade/downgrade offline, PPA migration, dan konfigurasi khusus jaringan terbatas.</p>
+      <div class="project-stack">
+        <span class="tag">Apache2</span>
+        <span class="tag blue">Offline Upgrade</span>
+        <span class="tag">PPA Mgmt</span>
+        <span class="tag orange">BRI Network</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TECH STACK -->
+<section id="stack">
+  <div class="section-label">// TEKNOLOGI</div>
+  <h2 class="section-title">Tech Stack</h2>
+  <div class="stack-section">
+
+    <div class="stack-row">
+      <span class="stack-category">OS / Platform</span>
+      <div class="stack-items">
+        <span class="stack-badge">Ubuntu 22.04 LTS</span>
+        <span class="stack-badge">Ubuntu 20.04</span>
+        <span class="stack-badge">Debian</span>
+        <span class="stack-badge">Windows Server</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Database</span>
+      <div class="stack-items">
+        <span class="stack-badge">Percona XtraDB Cluster</span>
+        <span class="stack-badge">MySQL 8.0</span>
+        <span class="stack-badge">ProxySQL 2.x</span>
+        <span class="stack-badge">Galera Cluster</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">High Availability</span>
+      <div class="stack-items">
+        <span class="stack-badge">Keepalived</span>
+        <span class="stack-badge">Virtual IP (VIP)</span>
+        <span class="stack-badge">R/W Splitting</span>
+        <span class="stack-badge">Failover</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Web & Proxy</span>
+      <div class="stack-items">
+        <span class="stack-badge">Nginx</span>
+        <span class="stack-badge">Apache2</span>
+        <span class="stack-badge">Reverse Proxy</span>
+        <span class="stack-badge">SSL/TLS</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Containerization</span>
+      <div class="stack-items">
+        <span class="stack-badge">Docker</span>
+        <span class="stack-badge">Docker Compose</span>
+        <span class="stack-badge">Docker Volume</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Monitoring & Tools</span>
+      <div class="stack-items">
+        <span class="stack-badge">journalctl</span>
+        <span class="stack-badge">systemd</span>
+        <span class="stack-badge">SCP / SFTP</span>
+        <span class="stack-badge">netstat</span>
+        <span class="stack-badge">tcpdump</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Remote Support</span>
+      <div class="stack-items">
+        <span class="stack-badge">AnyDesk</span>
+        <span class="stack-badge">TeamViewer</span>
+        <span class="stack-badge">Remote Desktop</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Server & AD</span>
+      <div class="stack-items">
+        <span class="stack-badge">Active Directory</span>
+        <span class="stack-badge">File Server</span>
+        <span class="stack-badge">User & Group Mgmt</span>
+        <span class="stack-badge">Backup & Restore</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Scripting</span>
+      <div class="stack-items">
+        <span class="stack-badge">Bash</span>
+        <span class="stack-badge">Go (basic)</span>
+        <span class="stack-badge">Python (basic)</span>
+        <span class="stack-badge">SQL</span>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-category">Dokumentasi</span>
+      <div class="stack-items">
+        <span class="stack-badge">Draw.io</span>
+        <span class="stack-badge">Microsoft Word</span>
+        <span class="stack-badge">SOP Writing</span>
+        <span class="stack-badge">Markdown</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERTIFIKASI & PENDIDIKAN -->
+<section id="edu">
+  <div class="section-label">// SERTIFIKASI & PENDIDIKAN</div>
+  <h2 class="section-title">Kualifikasi Formal</h2>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+
+    <!-- SERTIFIKASI -->
+    <div style="background: var(--bg2); padding: 2rem; grid-column: 1 / -1; border-bottom: 1px solid var(--border);">
+      <div class="section-label" style="margin-bottom: 1.2rem;">SERTIFIKASI</div>
+      <div style="display:flex; flex-direction:column; gap: 1rem;">
+
+        <div style="display:flex; gap: 1rem; align-items: flex-start; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div style="min-width: 40px; height: 40px; border-radius: 8px; background: rgba(0,229,160,0.1); border: 1px solid var(--border2); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🎓</div>
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Cisco CCNA Routing and Switching: Introduction to Networks</div>
+            <div style="font-size: 13px; color: var(--text2);">Cisco Networking Academy</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-top: 4px;">September 2017</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap: 1rem; align-items: flex-start; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div style="min-width: 40px; height: 40px; border-radius: 8px; background: rgba(0,119,255,0.1); border: 1px solid rgba(0,119,255,0.2); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🗃️</div>
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Membuat Data Warehouse untuk Arsitek Database (Data Engineer)</div>
+            <div style="font-size: 13px; color: var(--text2);">Skill Academy by Ruangguru</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-top: 4px;">September 2022</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap: 1rem; align-items: flex-start; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div style="min-width: 40px; height: 40px; border-radius: 8px; background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🏛️</div>
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Bimbingan Teknis Peningkatan Kapasitas Tenaga Kerja Mandiri</div>
+            <div style="font-size: 13px; color: var(--text2);">Kementerian Ketenagakerjaan RI</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-top: 4px;">Juni 2022</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PENDIDIKAN -->
+    <div style="background: var(--bg2); padding: 2rem;">
+      <div class="section-label" style="margin-bottom: 1.2rem;">PENDIDIKAN</div>
+      <div style="display:flex; flex-direction:column; gap: 1rem;">
+
+        <div style="padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-bottom: 6px;">2018 — 2019</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">S1 Teknik Informatika</div>
+          <div style="font-size: 13px; color: var(--text2);">STMIK Nusa Mandiri — Jakarta</div>
+        </div>
+
+        <div style="padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-bottom: 6px;">2015 — 2018</div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">D3 Teknik Informatika</div>
+          <div style="font-size: 13px; color: var(--text2);">Universitas BSI — Jakarta</div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text3); margin-top: 6px;">IPK: 3.24</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="background: var(--bg2); padding: 2rem; border-left: 1px solid var(--border);">
+      <div class="section-label" style="margin-bottom: 1.2rem;">STATISTIK</div>
+      <div style="display:flex; flex-direction:column; gap: 1rem;">
+        <div style="padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-align:center;">
+          <div style="font-family:var(--font-mono); font-size: 2rem; font-weight:700; color: var(--accent);">3</div>
+          <div style="font-size: 12px; color: var(--text3); margin-top: 4px;">Perusahaan</div>
+        </div>
+        <div style="padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-align:center;">
+          <div style="font-family:var(--font-mono); font-size: 2rem; font-weight:700; color: var(--accent);">3</div>
+          <div style="font-size: 12px; color: var(--text3); margin-top: 4px;">Sertifikasi</div>
+        </div>
+        <div style="padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-align:center;">
+          <div style="font-family:var(--font-mono); font-size: 2rem; font-weight:700; color: var(--accent);">6</div>
+          <div style="font-size: 12px; color: var(--text3); margin-top: 4px;">Skenario DR Diuji</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">// KONTAK</div>
+  <h2 class="section-title">Mari Bekerja Sama</h2>
+  <div class="contact-section">
+    <div>
+      <p class="contact-headline">Siap untuk<br><span style="color:var(--accent)">tantangan</span><br>berikutnya.</p>
+      <p class="contact-sub">
+        Terbuka untuk peluang baru di bidang IT Infrastructure, Database Administration, atau Linux System Administration. Siap berkontribusi dalam proyek enterprise skala besar.
+      </p>
+      <a href="mailto:d.agungp11@gmail.com" class="btn-primary" style="display:inline-flex; width:fit-content;">
+        Kirim Email ↗
+      </a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:d.agungp11@gmail.com" class="contact-link">
+        <span class="cl-icon">EMAIL</span>
+        d.agungp11@gmail.com
+      </a>
+      <a href="tel:+6285157443656" class="contact-link">
+        <span class="cl-icon">PHONE</span>
+        +62 851-5744-3656
+      </a>
+      <a href="https://linkedin.com/in/dwi-agung-pangestu-9215221a1" target="_blank" class="contact-link">
+        <span class="cl-icon">LINKEDIN</span>
+        dwi-agung-pangestu
+      </a>
+      <div class="contact-link" style="cursor:default;">
+        <span class="cl-icon">LOKASI</span>
+        Bekasi, Jawa Barat, Indonesia
+      </div>
+      <div class="contact-link" style="cursor:default;">
+        <span class="cl-icon">STATUS</span>
+        <span style="color:var(--accent)">● </span>Available for opportunities
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Dwi Agung Pangestu</span>. All rights reserved.</p>
+  <p>Built with <span>♥</span> — IT Infrastructure Engineer</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-card, .project-card, .exp-item, .stack-row').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
