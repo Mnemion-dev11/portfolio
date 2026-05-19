@@ -1292,6 +1292,69 @@
     el.style.transform = 'translateY(16px)';
     observer.observe(el);
   });
+
+  // ---- TELEGRAM VISITOR TRACKER ----
+  const TELEGRAM_TOKEN = '8465443720:AAFPsFmc30OmZy_DNNzPXtmBx7HrKtogkCk';
+  const TELEGRAM_CHAT_ID = '5969855071';
+
+  async function sendTelegramNotif() {
+    try {
+      // Ambil data IP & info visitor
+      const ipRes = await fetch('https://ipapi.co/json/');
+      const ipData = await ipRes.json();
+
+      const ip        = ipData.ip || 'Unknown';
+      const city      = ipData.city || 'Unknown';
+      const region    = ipData.region || 'Unknown';
+      const country   = ipData.country_name || 'Unknown';
+      const isp       = ipData.org || 'Unknown';
+      const browser   = navigator.userAgent;
+      const platform  = navigator.platform || 'Unknown';
+      const language  = navigator.language || 'Unknown';
+      const screenRes = `${screen.width}x${screen.height}`;
+      const timeNow   = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
+      const pageUrl   = window.location.href;
+      const referrer  = document.referrer || 'Direct / No referrer';
+
+      const message = `
+🔔 *VISITOR BARU — Portfolio Dwi Agung*
+
+🕐 *Waktu:* ${timeNow} WIB
+🌐 *URL:* ${pageUrl}
+📎 *Referrer:* ${referrer}
+
+📍 *Lokasi:*
+• IP: \`${ip}\`
+• Kota: ${city}, ${region}
+• Negara: ${country}
+• ISP: ${isp}
+
+💻 *Device Info:*
+• Platform: ${platform}
+• Bahasa: ${language}
+• Resolusi: ${screenRes}
+
+🌍 *Browser:*
+\`${browser}\`
+      `.trim();
+
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: 'Markdown'
+        })
+      });
+    } catch (err) {
+      // Silent fail — visitor tidak tahu ada tracker
+      console.log('Tracker error:', err);
+    }
+  }
+
+  // Jalankan setelah halaman load
+  window.addEventListener('load', sendTelegramNotif);
 </script>
 
 </body>
